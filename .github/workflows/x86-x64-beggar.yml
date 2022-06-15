@@ -35,6 +35,7 @@ jobs:
         
     - name: Clone Source Code
       run: |
+        sudo apt install -y rdate
         df -hT $PWD
         git clone $REPO_URL -b $REPO_BRANCH openwrt
     - name: Update Feeds
