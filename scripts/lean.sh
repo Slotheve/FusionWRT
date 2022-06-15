@@ -85,6 +85,9 @@ rm -rf ../../customfeeds/luci/applications/aliyundrive-webdav
 svn co https://github.com/messense/aliyundrive-webdav/trunk/openwrt/aliyundrive-webdav
 svn co https://github.com/messense/aliyundrive-webdav/trunk/openwrt/luci-app-aliyundrive-webdav
 
+# Mod zzz-default-settings
+pushd package/lean
+popd
 
 # Mod zzz-default-settings
 pushd package/lean/default-settings/files
