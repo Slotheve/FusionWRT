@@ -85,11 +85,6 @@ rm -rf ../../customfeeds/luci/applications/aliyundrive-webdav
 svn co https://github.com/messense/aliyundrive-webdav/trunk/openwrt/aliyundrive-webdav
 svn co https://github.com/messense/aliyundrive-webdav/trunk/openwrt/luci-app-aliyundrive-webdav
 
-# Add Pandownload
-cd package/lean
-svn co https://github.com/immortalwrt/packages/trunk/net/pandownload-fake-server
-cd ../
-cd ../
 
 # Mod zzz-default-settings
 pushd package/lean/default-settings/files
