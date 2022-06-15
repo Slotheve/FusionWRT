@@ -94,7 +94,7 @@ cd ~/actions-runner/_work/FusionWRT/FusionWRT/openwrt/
 
 # Mod zzz-default-settings
 cd
-cd ~/actions-runner/_work/FusionWRT/FusionWRT/openwrt/lean/default-settings/files
+cd ~/actions-runner/_work/FusionWRT/FusionWRT/openwrt/package/lean/default-settings/files
 sed -i '/http/d' zzz-default-settings
 sed -i '/18.06/d' zzz-default-settings
 export orig_version=$(cat "zzz-default-settings" | grep DISTRIB_REVISION= | awk -F "'" '{print $2}')
