@@ -36,6 +36,9 @@ jobs:
     - name: Download Package
       id: package
       run: |
+        cd openwrt
+        echo "OPENWRTROOT=$PWD" >> $GITHUB_ENV
+        echo "::set-output name=OPENWRTROOT::$(echo $PWD)"
         cd $OPENWRTROOT
         cat .config
         make download -j8
