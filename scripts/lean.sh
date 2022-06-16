@@ -17,9 +17,6 @@ rm -rf ../../customfeeds/luci/applications/luci-app-kodexplorer
 rm -rf openwrt-package/verysync
 rm -rf openwrt-package/luci-app-verysync
 
-# Add luci-app-ssr-plus
-# git clone --depth=1 https://github.com/fw876/helloworld
-git clone --depth=1 https://github.com/DHDAXCW/helloworld
 # Add luci-app-passwall
 git clone --depth=1 https://github.com/xiaorouji/openwrt-passwall
 svn co https://github.com/xiaorouji/openwrt-passwall/branches/luci/luci-app-passwall
@@ -40,12 +37,6 @@ git clone --depth=1 https://github.com/rufengsuixing/luci-app-onliner
 
 # Add luci-app-adguardhome
 svn co https://github.com/Lienol/openwrt-package/branches/other/luci-app-adguardhome
-
-# Add ddnsto & linkease
-svn co https://github.com/linkease/nas-packages-luci/trunk/luci/luci-app-ddnsto
-svn co https://github.com/linkease/nas-packages-luci/trunk/luci/luci-app-linkease
-svn co https://github.com/linkease/nas-packages/trunk/network/services/ddnsto
-svn co https://github.com/linkease/nas-packages/trunk/network/services/linkease
 
 # Add OpenClash
 svn co https://github.com/vernesong/OpenClash/trunk/luci-app-openclash
