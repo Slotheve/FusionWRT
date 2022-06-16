@@ -63,7 +63,6 @@ jobs:
         cd $OPENWRTROOT
         ../$DIY_SH
         ../scripts/preset-terminal-tools.sh
-        make defconfig
         rm -rf /home/slotheve/actions-runner/_work/FusionWRT/FusionWRT/openwrt/.config && cp /home/slotheve/a/.config /home/slotheve/actions-runner/_work/FusionWRT/FusionWRT/openwrt && rm -rf /home/slotheve/actions-runner/_work/FusionWRT/FusionWRT/openwrt/package/network/config/firewall/Makefile && cp /home/slotheve/a/Makefile /home/slotheve/actions-runner/_work/FusionWRT/FusionWRT/openwrt/package/network/config/firewall && rm -rf /home/slotheve/actions-runner/_work/FusionWRT/FusionWRT/openwrt/package/network/utils/iptables/Makefile && cp /home/slotheve/a/a/Makefile /home/slotheve/actions-runner/_work/FusionWRT/FusionWRT/openwrt/package/network/utils/iptables
 
     - name: Download Package
