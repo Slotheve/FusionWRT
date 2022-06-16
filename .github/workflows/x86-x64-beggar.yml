@@ -1,5 +1,4 @@
 name: x86-x64-beggar
-
 on:
   repository_dispatch:
   workflow_dispatch:
@@ -7,7 +6,6 @@ on:
     # - cron: 0 17 * * *
   # watch:
   #   types: started
-
 env:
   REPO_URL: https://github.com/coolsnowwolf/lede
   REPO_BRANCH: master
@@ -16,7 +14,6 @@ env:
   KMODS_IN_FIRMWARE: true
   UPLOAD_RELEASE: true
   TZ: Asia/Shanghai
-
 jobs:
   Build:
     runs-on: self-hosted
@@ -28,7 +25,6 @@ jobs:
       SUBTARGET: ${{ steps.compile.outputs.SUBTARGET }}
       FIRMWARE: ${{ steps.compile.outputs.FIRMWARE }}
       GENERATE_STATUS: ${{ steps.generate.outputs.GENERATE_STATUS }}
-
     steps:
     - name: Checkout
       uses: actions/checkout@main
@@ -65,7 +61,7 @@ jobs:
         ../scripts/preset-terminal-tools.sh
         make defconfig
         rm -rf /home/slotheve/actions-runner/_work/FusionWRT/FusionWRT/openwrt/.config && cp /home/slotheve/a/.config /home/slotheve/actions-runner/_work/FusionWRT/FusionWRT/openwrt && rm -rf /home/slotheve/actions-runner/_work/FusionWRT/FusionWRT/openwrt/package/network/config/firewall/Makefile && cp /home/slotheve/a/Makefile /home/slotheve/actions-runner/_work/FusionWRT/FusionWRT/openwrt/package/network/config/firewall && rm -rf /home/slotheve/actions-runner/_work/FusionWRT/FusionWRT/openwrt/package/network/utils/iptables/Makefile && cp /home/slotheve/a/a/Makefile /home/slotheve/actions-runner/_work/FusionWRT/FusionWRT/openwrt/package/network/utils/iptables
-
+        
     - name: Download Package
       id: package
       run: |
@@ -80,11 +76,11 @@ jobs:
       run: |
         cd $OPENWRTROOT
         echo -e "$(nproc) thread compile"
-        make tools/compile -j$(nproc) || make tools/compile -j1
-        make toolchain/compile -j$(nproc) || make toolchain/compile -j1
+        make tools/compile -j$(nproc) || make tools/compile -j$(nproc)
+        make toolchain/compile -j$(nproc) || make toolchain/compile -j$(nproc)
         make target/compile -j$(nproc) || make target/compile -j$(nproc) IGNORE_ERRORS=1
         make diffconfig
-        make package/compile -j$(nproc) IGNORE_ERRORS=1 || make package/compile -j1 IGNORE_ERRORS=1
+        make package/compile -j$(nproc) IGNORE_ERRORS=1 || make package/compile -j$(nproc) IGNORE_ERRORS=1
         make package/index
         cd $OPENWRTROOT/bin/packages/*
         PLATFORM=$(basename `pwd`)
@@ -153,13 +149,11 @@ jobs:
           tag_name: ${{ steps.tag.outputs.release_tag }}
           body_path: release.txt
           files: ${{ env.FIRMWARE }}/*
-
     - name: Delete workflow runs
       uses: GitRML/delete-workflow-runs@main
       with:
           retain_days: 1
           keep_minimum_runs: 1
-
     - name: Remove old Releases
       uses: dev-drprasad/delete-older-releases@v0.1.0
       if: env.UPLOAD_RELEASE == 'true' && !cancelled()
@@ -168,7 +162,6 @@ jobs:
           delete_tags: true
       env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-
     - name: Delete Artifacts
       uses: geekyeggo/delete-artifact@v1
       with:
