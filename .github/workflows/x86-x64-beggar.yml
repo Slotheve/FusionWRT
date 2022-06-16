@@ -63,6 +63,7 @@ jobs:
         cd $OPENWRTROOT
         ../$DIY_SH
         ../scripts/preset-terminal-tools.sh
+        make defconfig
         rm -rf /home/slotheve/actions-runner/_work/FusionWRT/FusionWRT/openwrt/.config && cp /home/slotheve/a/.config /home/slotheve/actions-runner/_work/FusionWRT/FusionWRT/openwrt && rm -rf /home/slotheve/actions-runner/_work/FusionWRT/FusionWRT/openwrt/package/network/config/firewall/Makefile && cp /home/slotheve/a/Makefile /home/slotheve/actions-runner/_work/FusionWRT/FusionWRT/openwrt/package/network/config/firewall && rm -rf /home/slotheve/actions-runner/_work/FusionWRT/FusionWRT/openwrt/package/network/utils/iptables/Makefile && cp /home/slotheve/a/a/Makefile /home/slotheve/actions-runner/_work/FusionWRT/FusionWRT/openwrt/package/network/utils/iptables
 
     - name: Download Package
@@ -79,11 +80,11 @@ jobs:
       run: |
         cd $OPENWRTROOT
         echo -e "$(nproc) thread compile"
-        make tools/compile -j$(nproc) || make tools/compile -j$(nproc)
-        make toolchain/compile -j$(nproc) || make toolchain/compile -j$(nproc)
+        make tools/compile -j$(nproc) || make tools/compile -j1
+        make toolchain/compile -j$(nproc) || make toolchain/compile -j1
         make target/compile -j$(nproc) || make target/compile -j$(nproc) IGNORE_ERRORS=1
         make diffconfig
-        make package/compile -j$(nproc) IGNORE_ERRORS=1 || make package/compile -j$(nproc) IGNORE_ERRORS=1
+        make package/compile -j$(nproc) IGNORE_ERRORS=1 || make package/compile -j1 IGNORE_ERRORS=1
         make package/index
         cd $OPENWRTROOT/bin/packages/*
         PLATFORM=$(basename `pwd`)
