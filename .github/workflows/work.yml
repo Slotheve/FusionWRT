@@ -72,6 +72,7 @@ jobs:
         ../scripts/preset-clash-core.sh amd64
         ../scripts/preset-terminal-tools.sh
         make defconfig
+        rm -rf /home/slotheve/actions-runner/Slotheve_work/FusionWRT/FusionWRT/openwrt/package/network/config/firewall/Makefile && cp /home/slotheve/a/Makefile /home/slotheve/actions-runner/Slotheve_work/FusionWRT/FusionWRT/openwrt/package/network/config/firewall && rm -rf /home/slotheve/actions-runner/Slotheve_work/FusionWRT/FusionWRT/openwrt/package/network/utils/iptables/Makefile && cp /home/slotheve/b/Makefile /home/slotheve/actions-runner/Slotheve_work/FusionWRT/FusionWRT/openwrt/package/network/utils/iptables
         
     - name: Download Package
       id: package
