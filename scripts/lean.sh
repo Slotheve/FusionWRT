@@ -23,6 +23,8 @@ git clone --depth=1 https://github.com/DHDAXCW/helloworld
 # Add luci-app-passwall
 git clone --depth=1 https://github.com/xiaorouji/openwrt-passwall
 svn co https://github.com/xiaorouji/openwrt-passwall/branches/luci/luci-app-passwall
+# Add luci-app-passwall2
+svn co https://github.com/xiaorouji/openwrt-passwall/branches/main/luci-app-passwall
 
 # Add luci-app-unblockneteasemusic
 rm -rf ../../customfeeds/luci/applications/luci-app-unblockmusic
