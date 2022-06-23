@@ -99,11 +99,11 @@ jobs:
       run: |
         cd $OPENWRTROOT
         echo -e "$(nproc) thread compile"
-        make tools/compile -j$(nproc) || make tools/compile -j2
-        make toolchain/compile -j$(nproc) || make toolchain/compile -j2
-        make target/compile -j$(nproc) || make target/compile -j2 IGNORE_ERRORS=1
+        make tools/compile -j$(nproc) || make tools/compile -j8
+        make toolchain/compile -j$(nproc) || make toolchain/compile -j8
+        make target/compile -j$(nproc) || make target/compile -j8 IGNORE_ERRORS=1
         make diffconfig
-        make package/compile -j$(nproc) IGNORE_ERRORS=1 || make package/compile -j2 IGNORE_ERRORS=1
+        make package/compile -j$(nproc) IGNORE_ERRORS=1 || make package/compile -j8 IGNORE_ERRORS=1
         make package/index
         cd $OPENWRTROOT/bin/packages/*
         PLATFORM=$(basename `pwd`)
@@ -169,7 +169,7 @@ jobs:
       env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
       with:
-          name: ${{ steps.tag.outputs.release_date }} x86-64
+          name: ${{ steps.tag.outputs.release_date }} openwrt
           tag_name: ${{ steps.tag.outputs.release_tag }}
           body_path: release.txt
           files: ${{ env.FIRMWARE }}/*
