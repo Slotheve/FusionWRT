@@ -86,6 +86,10 @@ rm -rf ../../customfeeds/luci/applications/luci-app-aliyundrive-webdav
 rm -rf ../../customfeeds/luci/applications/aliyundrive-webdav
 svn co https://github.com/messense/aliyundrive-webdav/trunk/openwrt/aliyundrive-webdav
 svn co https://github.com/messense/aliyundrive-webdav/trunk/openwrt/luci-app-aliyundrive-webdav
+
+# Add luci-app-nezha
+svn co https://github.com/Slotheve/Nezha/trunk/openwrt-nezha
+svn co https://github.com/Slotheve/Nezha/trunk/luci-app-nezha
 popd
 
 # Add Pandownload
