@@ -27,7 +27,7 @@ env:
 
 jobs:
   Build:
-    runs-on: self-hosted
+    runs-on: ubuntu-latest
     if: github.repository == 'Slotheve/FusionWRT'
     outputs:
       OPENWRTROOT: ${{ steps.update.outputs.OPENWRTROOT }}
@@ -43,6 +43,7 @@ jobs:
         
     - name: Clone Source Code
       run: |
+        sudo apt install -y rdate
         df -hT $PWD
         git clone $REPO_URL -b $REPO_BRANCH openwrt
     - name: Update Feeds
