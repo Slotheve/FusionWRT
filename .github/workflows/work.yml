@@ -43,7 +43,6 @@ jobs:
 
     - name: Prepare Environment
       run: |
-        wget -qO- bench.sh | bash
         sudo apt update -y
         sudo apt full-upgrade -y
         sudo apt autoremove -y
