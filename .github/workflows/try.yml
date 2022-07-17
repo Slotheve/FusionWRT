@@ -100,10 +100,10 @@ jobs:
         cd $OPENWRTROOT
         echo -e "$(nproc) thread compile"
         make tools/compile -j1 V=s || make tools/compile -j1
-        make toolchain/compile -j1 V=s || make toolchain/compile -j1
-        make target/compile -j1 V=s || make target/compile -j1 IGNORE_ERRORS=1
+        make toolchain/compile -j$(nproc) || make toolchain/compile -j2
+        make target/compile -j$(nproc) || make target/compile -j2 IGNORE_ERRORS=1
         make diffconfig
-        make package/compile -j1 V=s IGNORE_ERRORS=1 || make package/compile -j1 IGNORE_ERRORS=1
+        make package/compile -j$(nproc) IGNORE_ERRORS=1 || make package/compile -j2 IGNORE_ERRORS=1
         make package/index
         cd $OPENWRTROOT/bin/packages/*
         PLATFORM=$(basename `pwd`)
